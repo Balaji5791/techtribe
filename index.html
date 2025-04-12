@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1E1E1E;
+            padding: 15px;
+        }
+
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 20px;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        #search {
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .driver-container {
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .driver-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .driver-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #546E7A;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        .driver-info {
+            flex: 1;
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #1E1E1E;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bottom-nav a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Drivers</h2>
+        <a href="drivers.php">+</a>
+    </div>
+    
+    <input type="text" id="search" placeholder="Search" onkeyup="filterDrivers()">
+    
+    <div class="driver-container" id="driver-list">
+        <div class="driver-card">
+            <div class="driver-avatar">J</div>
+            <div class="driver-info">
+                <h3>John Smith</h3>
+                <p>Truck Driver</p>
+            </div>
+        </div>
+
+        <div class="driver-card">
+            <div class="driver-avatar">E</div>
+            <div class="driver-info">
+                <h3>Emily Johnson</h3>
+                <p>Delivery Specialist</p>
+            </div>
+        </div>
+
+        <div class="driver-card">
+            <div class="driver-avatar">M</div>
+            <div class="driver-info">
+                <h3>Michael Davis</h3>
+                <p>Freight Transporter</p>
+            </div>
+        </div>
+
+        <div class="driver-card">
+            <div class="driver-avatar">S</div>
+            <div class="driver-info">
+                <h3>Sophia Martinez</h3>
+                <p>Logistics Coordinator</p>
+            </div>
+        </div>
+
+        <div class="driver-card">
+            <div class="driver-avatar">D</div>
+            <div class="driver-info">
+                <h3>David Wilson</h3>
+                <p>Cargo Hauler</p>
+            </div>
+        </div>
+
+        <div class="driver-card">
+            <div class="driver-avatar">O</div>
+            <div class="driver-info">
+                <h3>Olivia Brown</h3>
+                <p>Transport Operator</p>
+            </div>
+        </div>
+
+        <div class="driver-card">
+            <div class="driver-avatar">A</div>
+            <div class="driver-info">
+                <h3>Ava Rodriguez</h3>
+                <p>Shipment Handler</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="index.html">Drivers</a>
+        <a href="shipments.html">Shipments</a>
+        <a href="notification.html">Notifications</a>
+        <a href="users.html">Users</a>
+    </div>
+
+    <script>
+        function filterDrivers() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let cards = document.querySelectorAll(".driver-card");
+
+            cards.forEach(card => {
+                let name = card.querySelector("h3").textContent.toLowerCase();
+                let role = card.querySelector("p").textContent.toLowerCase();
+                if (name.includes(input) || role.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

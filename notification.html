@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1E1E1E;
+            padding: 15px;
+        }
+
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 20px;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        #search {
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .notification-container {
+            padding: 10px;
+        }
+
+        .notification-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .notification-card h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .notification-card p {
+            margin: 5px 0;
+            color: #aaa;
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #1E1E1E;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bottom-nav a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Notifications</h2>
+        <a href="notification.php">+</a>
+    </div>
+    
+    <input type="text" id="search" placeholder="Search" onkeyup="filterNotifications()">
+    
+    <div class="notification-container" id="notification-list">
+        <div class="notification-card">
+            <h3>New Shipment Posted</h3>
+            <p>A new shipment for electronics from New York to Los Angeles has been posted.<br> 
+                <strong>Weight:</strong> 500 lbs, <strong>Dimensions:</strong> 3ft x 2ft x 2ft.<br>
+                <strong>Delivery timeline:</strong> 5 days. <strong>Budget:</strong> $1000.
+            </p>
+        </div>
+        <div class="notification-card">
+            <h3>Driver Application Received</h3>
+            <p>You have received an application from John Doe to deliver your shipment from New York to Los Angeles. Click here to view details and confirm.</p>
+        </div>
+        <div class="notification-card">
+            <h3>Shipment Delivery Confirmed</h3>
+            <p>Your shipment from New York to Los Angeles has been successfully delivered by John Doe. Click here to rate and review the driver.</p>
+        </div>
+        <div class="notification-card">
+            <h3>New Shipment Available</h3>
+            <p>A new shipment for furniture from Chicago to Miami is now available.<br>
+                <strong>Weight:</strong> 1000 lbs, <strong>Dimensions:</strong> 6ft x 4ft x 3ft.<br>
+                <strong>Delivery timeline:</strong> 7 days. <strong>Budget:</strong> $1500.
+            </p>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="index.html">Drivers</a>
+        <a href="shipments.html">Shipments</a>
+        <a href="notification.html">Notifications</a>
+        <a href="users.html">Users</a>
+    </div>
+
+    <script>
+        function filterNotifications() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let cards = document.querySelectorAll(".notification-card");
+
+            cards.forEach(card => {
+                let title = card.querySelector("h3").textContent.toLowerCase();
+                let content = card.querySelector("p").textContent.toLowerCase();
+                if (title.includes(input) || content.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
